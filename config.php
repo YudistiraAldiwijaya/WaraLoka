@@ -1,9 +1,16 @@
 <?php
 // Konfigurasi database
 define('DB_HOST', 'localhost');
-define('DB_USER', 'root');
-define('DB_PASS', '');
-define('DB_NAME', 'local_wisdom');
+define('DB_USER', 'projec15_root');
+define('DB_PASS', '@kaesquare123');
+define('DB_NAME', 'projec15_local_wisdom');
+
+// Konfigurasi Situs
+define('SITE_NAME','WaraLoka');
+define('SITE_URL', 'http://waraloka.project2ks2.my.id/waraloka');
+define('UPLOAD_PATH', 'WaraLoka/uploads/');
+
+
 
 // Fungsi untuk membuat koneksi database
 function getDBConnection() {
