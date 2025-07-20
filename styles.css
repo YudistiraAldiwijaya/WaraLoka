@@ -1,0 +1,881 @@
+/* Reset dan Gaya Dasar */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html { 
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: #2c1810;
+    background-color: #fefefe;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header */
+.header {
+    background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%);
+    color: white;
+    padding: 1rem 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-brand i {
+    font-size: 1.5rem;
+    color: #DC143C;
+}
+
+.nav-brand h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+/* Ikon Menu Hamburger - TERSEMBUNYI DI DESKTOP */
+.hamburger-menu {
+    display: none; 
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: white;
+    z-index: 1100; 
+}
+
+/* Menu Navigasi (Gaya Desktop) */
+.nav-menu {
+    display: flex;
+    gap: 2rem;
+    position: absolute; 
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 900;
+    flex-direction: row; 
+    padding-top: 0; 
+    transition: none; 
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    font-weight: 400;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: #DC143C;
+}
+
+.nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #DC143C;
+}
+
+/* Status Pengguna untuk Desktop - DITAMPILKAN DI DESKTOP, TERSEMBUNYI DI MOBILE */
+#userStatusDesktop { 
+    display: flex; 
+    align-items: center;
+    gap: 10px;
+    font-weight: 500;
+    color: white;
+    margin-left: auto; 
+}
+
+#userStatusDesktop #logoutBtnDesktop {
+    background: #DC143C; 
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+    width: auto; 
+}
+
+#userStatusDesktop #logoutBtnDesktop:hover {
+    background: #B22222;
+}
+
+/* Status Pengguna untuk Mobile - TERSEMBUNYI DI DESKTOP, DITAMPILKAN DI MENU PADA MOBILE */
+#userStatusMobile {
+    display: none; 
+}
+
+#userStatusMobile .cta-button {
+    background: #DC143C; 
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+    width: auto; 
+}
+
+#userStatusMobile .cta-button:hover {
+    background: #B22222;
+}
+
+/* Bagian Hero */
+.hero {
+    background: linear-gradient(135deg, #DC143C 0%, #B22222 50%, #8B4513 100%);
+    color: white;
+    padding: 120px 0 80px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.batik-pattern {
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 200px;
+    height: 200px;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="batik" patternUnits="userSpaceOnUse" width="20" height="20"><circle cx="10" cy="10" r="3" fill="rgba(255,255,255,0.1)"/><path d="M0,10 Q5,5 10,10 T20,10" stroke="rgba(255,255,255,0.1)" fill="none"/></pattern></defs><rect width="100" height="100" fill="url(%23batik)"/></svg>') repeat;
+    opacity: 0.3;
+}
+
+.hero h2 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.cta-button {
+    background: white;
+    color: #DC143C;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+/* Gaya untuk tombol kecil (Edit/Hapus) */
+.cta-button.small-button {
+    padding: 8px 15px;
+    font-size: 0.9rem;
+    border-radius: 20px;
+    box-shadow: none; 
+    background: #555; 
+    color: white;
+}
+
+.cta-button.small-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.cta-button.small-button.edit-btn {
+    background: #007bff; 
+}
+.cta-button.small-button.edit-btn:hover {
+    background: #0056b3;
+}
+
+.cta-button.small-button.delete-btn {
+    background: #dc3545; 
+}
+.cta-button.small-button.delete-btn:hover {
+    background: #c82333;
+}
+
+/* Kontainer aksi pemilik */
+.owner-actions {
+    margin-top: 1rem;
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end; 
+}
+
+/* Gaya Bagian */
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #8B4513;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, #DC143C, #8B4513);
+    border-radius: 2px;
+}
+
+/* Bagian Cerita (Gaya Global/Umum) */
+.stories-section {
+    padding: 80px 0;
+    background-color: #fafafa;
+}
+
+.stories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.story-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    display: flex; 
+    flex-direction: column; 
+    height: auto; 
+}
+
+.story-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.story-image {
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(135deg, #DC143C, #8B4513);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 3rem;
+}
+
+.story-content {
+    padding: 1.5rem;
+    display: flex; 
+    flex-direction: column; 
+    height: 100%; 
+}
+
+.story-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #8B4513;
+    margin-bottom: 0.5rem;
+}
+
+.story-location {
+    color: #DC143C;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.story-excerpt {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.story-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+    margin-top: auto; 
+}
+
+.vote-section {
+    display: flex;
+    align-items: center;
+    gap: 5px; 
+}
+
+.like-display, .dislike-display {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.vote-btn {
+    background: none;
+    border: none;
+    color: #DC143C;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+    padding: 5px; 
+}
+
+.vote-btn:hover {
+    color: #8B4513;
+}
+
+.vote-btn.active {
+    color: #8B4513; 
+}
+
+.vote-btn[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.like-count, .dislike-count { 
+    font-weight: 600;
+    color: #8B4513;
+    font-size: 1.1rem;
+}
+
+.load-more-btn {
+    display: block;
+    margin: 0 auto;
+    background: linear-gradient(135deg, #DC143C, #8B4513);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.load-more-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Bagian Kirim */
+.submit-section {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
+}
+
+.story-form {
+    max-width: 600px;
+    margin: 0 auto;
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #8B4513;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-family: inherit;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #DC143C;
+}
+
+.form-group textarea {
+    height: 120px;
+    resize: vertical;
+}
+
+.file-preview {
+    margin-top: 10px;
+}
+
+.file-preview img {
+    max-width: 200px;
+    max-height: 200px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.submit-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #DC143C, #8B4513);
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Footer */
+.footer {
+    background: #2c1810;
+    color: white;
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.footer-brand i {
+    color: #DC143C;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 5% auto;
+    padding: 2rem;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 600px;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+}
+
+/* Gaya Kustom untuk modal konfirmasi kecil */
+.modal-content.small-modal-content {
+    max-width: 400px; 
+    padding: 2rem; 
+    margin: 10% auto; 
+}
+
+/* Opsional: Timpa gaya tombol tutup untuk modal yang lebih kecil */
+.modal-content.small-modal-content .close {
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+}
+
+.modal-actions .cta-button {
+    flex: 1; 
+    max-width: 150px; 
+}
+
+.modal-actions .submit-btn { 
+    background: linear-gradient(135deg, #DC143C, #8B4513); 
+    color: white;
+}
+
+.modal-actions .submit-btn:hover {
+    background: linear-gradient(135deg, #B22222, #A0522D);
+}
+
+.modal-actions .delete-btn { 
+    background: #6c757d; 
+    color: white;
+}
+
+.modal-actions .delete-btn:hover {
+    background: #5a6268;
+}
+
+.close {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #DC143C;
+}
+
+/* Gaya Khusus Modal Otentikasi */
+.auth-forms-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.auth-form {
+    width: 100%;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    background-color: #fff;
+    margin-top: 1rem;
+}
+
+.auth-form:not(.active) {
+    display: none;
+}
+
+.auth-form .form-title {
+    text-align: center;
+    color: #8B4513;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+}
+
+.auth-form .form-group {
+    margin-bottom: 1rem;
+}
+
+.auth-form label {
+    color: #555;
+    font-weight: 500;
+}
+
+.auth-form input[type="text"],
+.auth-form input[type="password"],
+.auth-form input[type="email"] {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.auth-form input:focus,
+.auth-form textarea:focus {
+    outline: none;
+    border-color: #DC143C;
+}
+
+.auth-submit-btn {
+    margin-top: 1.5rem;
+    padding: 12px;
+    font-size: 1rem;
+}
+
+.switch-form-text {
+    text-align: center;
+    margin-top: 1rem;
+    color: #666;
+}
+
+.switch-form-text a {
+    color: #DC143C;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.switch-form-text a:hover {
+    text-decoration: underline;
+}
+
+.message-container {
+    margin-top: 1rem;
+}
+
+/* Gaya Search Bar & Saran */
+.search-bar-container {
+    display: flex;
+    align-items: center;
+    max-width: 600px;
+    margin: 0 auto 3rem auto; 
+    position: relative; 
+}
+
+.search-input {
+    flex-grow: 1;
+    padding: 12px 40px 12px 40px; 
+    border: 2px solid #e0e0e0;
+    border-radius: 25px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: #DC143C;
+    box-shadow: 0 0 8px rgba(220, 20, 60, 0.2);
+}
+
+.search-icon { 
+    position: absolute;
+    left: 15px; 
+    top: 50%;
+    transform: translateY(-50%);
+    color: #8B4513; 
+    font-size: 1.2rem;
+    z-index: 1; 
+}
+
+.clear-search-btn {
+    position: absolute;
+    right: 15px;
+    background: none;
+    border: none;
+    color: #aaa;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    padding: 5px; 
+}
+
+.clear-search-btn:hover {
+    color: #8B4513;
+}
+
+/* Dropdown Saran Pencarian */
+.search-dropdown {
+    position: absolute;
+    top: 100%; 
+    left: 0;
+    right: 0;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    z-index: 100; 
+    max-height: 250px; 
+    overflow-y: auto; 
+    display: none; 
+}
+
+.search-dropdown ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.search-dropdown li {
+    padding: 10px 15px;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+    color: #333;
+}
+
+.search-dropdown li:last-child {
+    border-bottom: none;
+}
+
+.search-dropdown li:hover,
+.search-dropdown li.highlighted { 
+    background-color: #f0f0f0;
+    color: #DC143C;
+}
+
+/* Gaya Responsif (Mobile First) */
+@media (max-width: 768px) {
+    /* Penyesuaian header untuk mobile */
+    .header .container {
+        flex-wrap: nowrap; 
+        justify-content: space-between; 
+    }
+
+    /* Tampilkan menu hamburger */
+    .hamburger-menu {
+        display: block;
+        order: 2; 
+        z-index: 1100; 
+    }
+
+    /* Menu navigasi utama sebagai sidebar overlay */
+    .nav-menu {
+        position: fixed; 
+        top: 0;
+        right: -280px; 
+        width: 250px; 
+        height: 100%;
+        background: linear-gradient(135deg, #A0522D 0%, #8B4513 100%);
+        flex-direction: column; 
+        padding-top: 60px; 
+        box-shadow: -2px 0 10px rgba(0,0,0,0.3);
+        transition: right 0.3s ease-in-out;
+        gap: 0; 
+        align-items: flex-start; 
+        z-index: 1050; 
+        left: unset; 
+        transform: none; 
+    }
+
+    /* Status aktif untuk menu mobile - GESER MASUK */
+    .nav-menu.active {
+        right: 0; 
+    }
+
+    .nav-link {
+        width: 100%; 
+        padding: 15px 20px; 
+        color: white; 
+        font-size: 1.1rem;
+        border-bottom: 1px solid rgba(255,255,255,0.1); 
+    }
+    
+    .nav-link:last-of-type {
+        border-bottom: none;
+    }
+
+    .nav-link.active::after { 
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 5px; 
+        height: 100%;
+        background-color: #DC143C;
+        transform: none; 
+    }
+
+    /* Sembunyikan status pengguna desktop dan tampilkan status pengguna mobile */
+    #userStatusDesktop {
+        display: none !important; 
+    }
+
+    /* loginSignupBtn (Log in / Daftar) di menu mobile */
+    #loginSignupBtn {
+        display: block; 
+        width: 100%;
+        padding: 15px 20px;
+        color: white;
+        font-size: 1.1rem;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        text-align: left; 
+        text-decoration: none; 
+    }
+
+    /* Tampilkan status pengguna mobile saat login, di dalam nav-menu yang aktif */
+    #userStatusMobile {
+        display: none; 
+        flex-direction: column; 
+        align-items: flex-start;
+        width: 100%;
+        padding: 20px;
+        border-top: 1px solid rgba(255,255,255,0.2); 
+        margin-top: auto; 
+        color: white;
+        box-sizing: border-box; 
+    }
+
+    #userStatusMobile span {
+        margin-bottom: 10px;
+        font-size: 1.1rem;
+    }
+
+    #userStatusMobile .cta-button {
+        width: 100%; 
+        text-align: center;
+        margin-top: 0; 
+    }
+
+    /* Sesuaikan padding konten utama untuk header tetap */
+    .hero {
+        padding-top: 100px; 
+    }
+    .stories-section {
+        padding-top: 40px; 
+    }
+    .submit-section {
+        padding-top: 40px; 
+    }
+    
+    .hero h2 {
+        font-size: 2rem;
+    }
+    
+    .stories-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .story-form {
+        margin: 0 1rem;
+    }
+
+    .search-dropdown {
+        left: 20px; 
+        right: 20px;
+        width: auto;
+    }
+}

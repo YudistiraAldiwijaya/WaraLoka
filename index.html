@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WaraLoka - Berbagi Cerita Lokal</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div id="globalMessageContainer" class="global-message-container"></div>
+
+    <header class="header">
+        <div class="container">
+            <div class="nav-brand">
+                <i class="fas fa-book-open"></i>
+                <h1>WaraLoka</h1>
+            </div>
+            
+            <div class="hamburger-menu" id="hamburgerMenu">
+                <i class="fas fa-bars"></i>
+            </div>
+
+            <nav class="nav-menu" id="mainNavMenu">
+                <a href="#home" class="nav-link active">Beranda</a> <a href="stories.html" class="nav-link">Cerita</a>
+                <a href="#submit" class="nav-link">Kirim Cerita</a>
+                <a href="#" class="nav-link" id="loginSignupBtn">Log in / Daftar</a>
+                
+                <div id="userStatusMobile" class="user-status-mobile">
+                    Halo, <span id="loggedInUsernameMobile"></span>!
+                    <button id="logoutBtnMobile" class="cta-button">Logout</button>
+                </div>
+            </nav>
+            
+            <div id="userStatusDesktop" class="user-status-desktop">
+                Halo, <span id="loggedInUsernameDesktop"></span>!
+                <button id="logoutBtnDesktop" class="cta-button">Logout</button>
+            </div>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="batik-pattern"></div>
+                <h2>Jelajahi Kearifan Lokal Nusantara</h2>
+                <p>Platform berbagi cerita dan fakta unik dari berbagai daerah di Indonesia</p>
+                <button class="cta-button" id="shareStoryHeroBtn">
+                    <i class="fas fa-plus"></i> Bagikan Ceritamu
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section id="stories" class="stories-section">
+        <div class="container">
+            <h2 class="section-title">Cerita Terpopuler</h2>
+            <div class="stories-grid" id="storiesGrid">
+                </div>
+            <button class="load-more-btn" onclick="window.location.href='stories.html'">Muat Lebih Banyak</button>
+        </div>
+    </section>
+
+    <section id="submit" class="submit-section">
+        <div class="container">
+            <h2 class="section-title">Bagikan Cerita Lokalmu</h2>
+            <form class="story-form" id="storyForm" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="title">Judul Cerita</label>
+                    <input type="text" id="title" name="title" required placeholder="Masukkan judul cerita...">
+                </div>
+                
+                <div class="form-group">
+                    <label for="location">Lokasi</label>
+                    <input type="text" id="location" name="location" required placeholder="Nama kota/daerah...">
+                </div>
+                
+                <div class="form-group">
+                    <label for="content">Cerita</label>
+                    <textarea id="content" name="content" required placeholder="Ceritakan kearifan lokal yang ingin kamu bagikan..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="photo">Foto (Opsional)</label>
+                    <input type="file" id="photo" name="photo" accept="image/*">
+                    <div class="file-preview" id="filePreview"></div>
+                </div>
+                
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-paper-plane"></i> Kirim Cerita
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <i class="fas fa-book-open"></i>
+                    <span>WaraLoka</span>
+                </div>
+                <p>© 2024 WaraLoka. Melestarikan kearifan lokal Indonesia.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div id="storyModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">×</span>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
+    <div id="authModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeAuthModal()">×</span>
+            <div class="auth-forms-container">
+                <div id="loginFormContainer" class="auth-form active">
+                    <h2 class="form-title">Login</h2>
+                    <form id="loginForm">
+                        <div class="form-group">
+                            <label for="loginUsername">Username</label>
+                            <input type="text" id="loginUsername" name="username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="loginPassword">Password</label>
+                            <input type="password" id="loginPassword" name="password" required>
+                        </div>
+                        <button type="submit" class="submit-btn auth-submit-btn">Login</button>
+                    </form>
+                    <p class="switch-form-text">Belum punya akun? <a href="#" id="showSignup">Daftar di sini</a></p>
+                </div>
+
+                <div id="signupFormContainer" class="auth-form" style="display: none;">
+                    <h2 class="form-title">Daftar Akun Baru</h2>
+                    <form id="signupForm">
+                        <div class="form-group">
+                            <label for="signupUsername">Username</label>
+                            <input type="text" id="signupUsername" name="username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="signupEmail">Email (Opsional)</label>
+                            <input type="email" id="signupEmail" name="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="signupPassword">Password</label>
+                            <input type="password" id="signupPassword" name="password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="signupConfirmPassword">Konfirmasi Password</label>
+                            <input type="password" id="signupConfirmPassword" name="confirm_password" required>
+                        </div>
+                        <button type="submit" class="submit-btn auth-submit-btn">Daftar</button>
+                    </form>
+                    <p class="switch-form-text">Sudah punya akun? <a href="#" id="showLogin">Login di sini</a></p>
+                </div>
+            </div>
+            <div id="authMessageContainer" class="message-container"></div>
+        </div>
+    </div>
+    
+    <div id="editStoryModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeEditStoryModalBtn">×</span>
+            <h2 class="form-title">Edit Cerita Lokalmu</h2>
+            <form class="story-form" id="editStoryForm" enctype="multipart/form-data">
+                <input type="hidden" id="editStoryId" name="story_id">
+                <input type="hidden" id="editCurrentPhoto" name="current_photo"> <div class="form-group">
+                    <label for="editTitle">Judul Cerita</label>
+                    <input type="text" id="editTitle" name="title" required placeholder="Masukkan judul cerita...">
+                </div>
+                
+                <div class="form-group">
+                    <label for="editLocation">Lokasi</label>
+                    <input type="text" id="editLocation" name="location" required placeholder="Nama kota/daerah...">
+                </div>
+                
+                <div class="form-group">
+                    <label for="editContent">Cerita</label>
+                    <textarea id="editContent" name="content" required placeholder="Ceritakan kearifan lokal yang ingin kamu bagikan..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>Foto Saat Ini</label>
+                    <div id="currentPhotoPreview" style="margin-bottom: 10px;">
+                        </div>
+                    <label for="editPhoto">Ganti Foto (Opsional)</label>
+                    <input type="file" id="editPhoto" name="photo" accept="image/*">
+                    <div class="file-preview" id="editFilePreview"></div>
+                    <div style="margin-top: 10px;">
+                        <input type="checkbox" id="removePhotoCheckbox" name="remove_photo" value="true">
+                        <label for="removePhotoCheckbox">Hapus Foto</label>
+                    </div>
+                </div>
+                
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-save"></i> Simpan Perubahan
+                </button>
+            </form>
+            <div id="editStoryMessageContainer" class="message-container"></div>
+        </div>
+    </div>
+    <div id="customConfirmModal" class="modal">
+        <div class="modal-content small-modal-content">
+            <span class="close" id="closeCustomConfirmModalBtn">×</span>
+            <h3 id="customConfirmMessage" style="text-align: center; margin-bottom: 25px; color: #8B4513;"></h3>
+            <div class="modal-actions" style="display: flex; justify-content: center; gap: 15px;">
+                <button class="cta-button submit-btn" id="customConfirmYesBtn">Ya</button>
+                <button class="cta-button delete-btn" id="customConfirmNoBtn">Tidak</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
